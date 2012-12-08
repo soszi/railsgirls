@@ -1,0 +1,38 @@
+
+
+
+<%= gmaps4rails(@pins) %> 
+<%= yield :scripts %>
+
+<br />
+<h1>Listing attendees</h1>
+<br />
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Twitter handle</th>
+    <th>Bio</th>
+    <th>Address</th>
+    <th>Picture</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @attendees.each do |attendee| %>
+  <tr>
+    <td><%= attendee.name %></td>
+    <td><%= attendee.twitter_handle %></td>
+    <td><%= attendee.bio %></td>
+    <td><%= attendee.address %></td>
+    <td><%= attendee.picture %></td>
+    <td><%= link_to 'Show', attendee %></td>
+    <td><%= link_to 'Edit', edit_attendee_path(attendee) %></td>
+    <td><%= link_to 'Destroy', attendee, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Attendee', new_attendee_path %>
